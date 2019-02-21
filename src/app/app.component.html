@@ -1,8 +1,8 @@
 <nb-layout>
-  <nb-layout-column></nb-layout-column>
+
 
   <nb-layout-column>
-    <nb-chat title="Nadiabot" size="large" status="success">
+    <nb-chat title="Nadiabot" size="xxlarge"  status="success">
       <nb-chat-message
         *ngFor="let msg of messages"
         [type]="msg.type"
@@ -17,5 +17,4 @@
     </nb-chat>
   </nb-layout-column>
 
-  <nb-layout-column></nb-layout-column>
 </nb-layout>

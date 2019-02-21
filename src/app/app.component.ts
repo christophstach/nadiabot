@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {ChatMessage} from './model/chat-message';
-import {NadiabotService} from './services/nadiabot.service';
+import { Component } from '@angular/core';
+import { ChatMessage } from './model/chat-message';
+import { NadiabotService } from './services/nadiabot.service';
+import { UserChatMesasge } from './model/user-chat-mesasge';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +13,15 @@ export class AppComponent {
   messages: ChatMessage[] = [];
 
   constructor(private nadiabot: NadiabotService) {
-  }
-
-  sendMessage(event: any) {
-    this.messages.push({
-      text: event.message,
-      date: new Date(),
-      reply: true,
-      type: 'text',
-      user: {
-        name: 'Nadia',
-        avatar: 'https://i.gifer.com/no.gif',
-      },
+    this.nadiabot.botMessage$.subscribe(message => {
+      this.messages.push(message);
     });
 
+    this.nadiabot.startChatting();
+  }
+
+  sendMessage(event: { message: string }) {
+    this.messages.push(new UserChatMesasge(event.message));
     const botReply = this.nadiabot.reply(event.message);
 
     if (botReply) {
