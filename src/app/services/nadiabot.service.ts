@@ -55,7 +55,13 @@ export class NadiabotService {
   async reply(text: string): Promise<ChatMessage> {
     switch (text.trim()) {
       case 'hilfe':
-        return new BotChatMessage('Kein Problem! Sende doch mal das Wort "westie".');
+        return new BotChatMessage('Kein Problem! Sende doch mal das Wort "westie" oder "source".');
+
+      case 'source':
+        return new BotChatMessage(`
+          Falls du den Quellcode dieses außergewöhnlichen Projekts gebrauchen kannst,
+          findest du ihn hier: https://github.com/christophstach/nadiabot
+        `);
 
       case 'westie':
         return new BotChatMessage(
