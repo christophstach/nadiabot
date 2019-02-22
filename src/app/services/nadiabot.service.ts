@@ -19,7 +19,8 @@ export class NadiabotService {
     'Ich werde versuchen dir möglichst akurate Antworten auf Basis der realen, effizienten Nadia zu geben.',
     'PS: Meld dich bei deinem König, er benötigt deine Hilfe um sich besser zu konzentrieren und möchte einen Termin ausmachen.',
     'Alles gute und herzlichen Glückwunsch zum Geburtstag! Das alle deine Träume in Erfüllung gehen. :-)',
-    'Ich gelte auch als Einladung auf eine leckere italienische Pizza.'
+    'Ich gelte auch als Einladung auf eine leckere italienische Pizza.',
+    'Gebe "hilfe" ein damit ich dir helfen kann.'
   ];
 
   private defaultMessages = [
@@ -28,6 +29,13 @@ export class NadiabotService {
     '...',
     'Em',
     '*ignorieren*'
+  ];
+
+  private westieMessages = [
+    'Guck mal!',
+    'Wie süß!',
+    'Gibts doch nicht!',
+    'Wow!'
   ];
 
   constructor(private dogsApi: DogsApiService) {
@@ -46,9 +54,12 @@ export class NadiabotService {
 
   async reply(text: string): Promise<ChatMessage> {
     switch (text.trim()) {
+      case 'hilfe':
+        return new BotChatMessage('Kein Problem! Sende doch mal das Wort "westie".');
+
       case 'westie':
         return new BotChatMessage(
-          'Guck mal!',
+          sample(this.westieMessages),
           await this.dogsApi.fetchRandomDog()
         );
 
