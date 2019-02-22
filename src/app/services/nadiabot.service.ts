@@ -15,7 +15,7 @@ export class NadiabotService {
   private currentMessage = 0;
   private chatMessages: string[] = [
     'Hallo, mein Name ist Nadiabot.',
-    'Ich bin zwar noch nicht so ausgereift, jedoch kannst du bereits mit mir chatten.',
+    'Ich bin zwar noch ein Prototyp, jedoch kannst du bereits mit mir chatten.',
     'Ich werde versuchen dir möglichst akurate Antworten auf Basis der realen, effizienten Nadia zu geben.',
     'PS: Meld dich bei deinem König, er benötigt deine Hilfe um sich besser zu konzentrieren und möchte einen Termin ausmachen.',
     'Alles gute und herzlichen Glückwunsch zum Geburtstag! Das alle deine Träume in Erfüllung gehen. :-)',
@@ -31,8 +31,6 @@ export class NadiabotService {
   ];
 
   constructor(private dogsApi: DogsApiService) {
-
-
   }
 
   startChatting() {
@@ -50,7 +48,7 @@ export class NadiabotService {
     switch (text.trim()) {
       case 'westie':
         return new BotChatMessage(
-          'Guck mal! Dein Lieblingshund!',
+          'Guck mal!',
           await this.dogsApi.fetchRandomDog()
         );
 
