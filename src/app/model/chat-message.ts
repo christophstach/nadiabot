@@ -7,4 +7,5 @@ export interface ChatMessage {
     name: string,
     avatar: string;
   };
+  files?: { url: string; type: 'image/jpeg' | 'image/gif ' }[];
 }

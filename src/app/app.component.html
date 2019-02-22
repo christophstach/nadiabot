@@ -2,7 +2,7 @@
 
 
   <nb-layout-column>
-    <nb-chat title="Nadiabot" size="xxlarge"  status="success">
+    <nb-chat title="Nadiabot" [size]="chatSize">
       <nb-chat-message
         *ngFor="let msg of messages"
         [type]="msg.type"
@@ -10,6 +10,7 @@
         [reply]="msg.reply"
         [sender]="msg.user.name"
         [date]="msg.date"
+        [files]="msg.files"
         [avatar]="msg.user.avatar">
       </nb-chat-message>
 

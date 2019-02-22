@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from '../model/chat-message';
 import { BotChatMessage } from '../model/bot-chat-message';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { sample } from 'lodash';
-import { DogsEndpointService } from './dogs-endpoint.service';
+import { DogsApiService } from './dogs.api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class NadiabotService {
     'Ich bin zwar noch nicht so ausgereift, jedoch kannst du bereits mit mir chatten.',
     'Ich werde versuchen dir möglichst akurate Antworten auf Basis der realen, effizienten Nadia zu geben.',
     'PS: Meld dich bei deinem König, er benötigt deine Hilfe um sich besser zu konzentrieren und möchte einen Termin ausmachen.',
-    'Alles gute und herzlichen Glückwünsch zum Geburtstag!'
+    'Alles gute und herzlichen Glückwunsch zum Geburtstag! Das alle deine Träume in Erfüllung gehen. :-)',
+    'Ich gelte auch als Einladung auf eine leckere italienische Pizza.'
   ];
 
   private defaultMessages = [
@@ -29,7 +30,7 @@ export class NadiabotService {
     '*ignorieren*'
   ];
 
-  constructor(private dogsEndpoint: DogsEndpointService) {
+  constructor(private dogsApi: DogsApiService) {
 
 
   }
@@ -45,11 +46,14 @@ export class NadiabotService {
     }, 2000);
   }
 
-  reply(text: string): ChatMessage {
+  async reply(text: string): Promise<ChatMessage> {
     switch (text.trim()) {
       case 'westie':
-        return new BotChatMessage('Guck mal! Dein Lieblingshund!');
-        break;
+        return new BotChatMessage(
+          'Guck mal! Dein Lieblingshund!',
+          await this.dogsApi.fetchRandomDog()
+        );
+
       default:
         return new BotChatMessage(sample(this.defaultMessages));
     }

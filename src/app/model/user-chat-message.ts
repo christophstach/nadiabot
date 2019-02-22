@@ -1,6 +1,6 @@
 import { ChatMessage } from './chat-message';
 
-export class UserChatMesasge implements ChatMessage {
+export class UserChatMessage implements ChatMessage {
   date: Date;
   reply: boolean;
   text: string;
@@ -13,6 +13,6 @@ export class UserChatMesasge implements ChatMessage {
     this.reply = true;
     this.text = text;
     this.type = 'text';
-    this.user = {name: 'Nadia', avatar: ''};
+    this.user = {name: 'User', avatar: null};
   }
 }
