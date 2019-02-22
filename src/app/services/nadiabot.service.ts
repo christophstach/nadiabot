@@ -17,7 +17,7 @@ export class NadiabotService {
     'Hallo, mein Name ist Nadiabot.',
     'Ich bin zwar noch ein Prototyp, jedoch kannst du bereits mit mir chatten.',
     'Ich werde versuchen dir möglichst akurate Antworten auf Basis der realen, effizienten Nadia zu geben.',
-    'PS: Meld dich bei deinem König, er benötigt deine Hilfe um sich besser zu konzentrieren und möchte einen Termin ausmachen.',
+    'PS: Meld dich bei deinem König, er benötigt deine Hilfe um sich besser konzentrieren zu können und möchte einen Termin ausmachen.',
     'Alles gute und herzlichen Glückwunsch zum Geburtstag! Das alle deine Träume in Erfüllung gehen. :-)',
     'Ich gelte auch als Einladung auf eine leckere italienische Pizza.',
     'Gebe "hilfe" ein damit ich dir helfen kann.'
